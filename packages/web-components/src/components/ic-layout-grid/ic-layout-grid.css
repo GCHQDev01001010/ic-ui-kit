@@ -1,0 +1,160 @@
+@import "../../global/normalize.css";
+
+:host {
+    display: block;
+}
+
+.grid-container {
+    display: grid;
+    grid-gap: var(--ic-space-md);
+    grid-auto-flow: row;
+}
+
+/* xs */
+@media only screen and (max-width: 576px) {
+    .grid-container {
+        margin: 1rem 0.5rem;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .auto-layout-grid {
+        margin: 1rem 2rem;
+    }
+    .full-width-in-mobile ::slotted(*) {
+        grid-column: auto / span 4;
+    }
+}
+
+  
+  /* sm */
+  @media only screen and (min-width: 577px) {
+    .grid-container {
+        margin: 1rem 1rem;
+        grid-template-columns: repeat(8, minmax(0, 1fr));;
+    }
+    .auto-layout-grid {
+        margin: 1rem 5rem;
+    }
+    .auto-layout-half ::slotted(*) {
+        grid-column: auto / span 4;
+    }
+    .auto-layout-thirds-left {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 6;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 2;
+        }
+    }
+    .auto-layout-thirds-right {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 2;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 6;
+        }
+    }
+  }
+  
+/* md */
+  @media only screen and (min-width: 769px) {
+    .grid-container {
+        margin: 1rem 1rem;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .auto-layout-grid {
+        margin: 1rem 8rem;
+    }
+    .auto-layout-half ::slotted(*) {
+        grid-column: auto / span 6;
+    }
+    .auto-layout-thirds-left {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 8;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 4;
+        }
+    }
+    .auto-layout-thirds-right {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 4;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 8;
+        }
+    }
+  }
+  
+  /* lg */
+  @media only screen and (min-width: 993px) {
+    .grid-container {
+        margin: 1rem 1rem;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .auto-layout-grid {
+        margin: 1rem 10rem;
+    }
+    .auto-layout-half ::slotted(*) {
+        grid-column: auto / span 6;
+    }
+    .auto-layout-thirds-left {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 8;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 4;
+        }
+    }
+    .auto-layout-thirds-right {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 4;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 8;
+        }
+    }
+  }
+
+  /* xl */
+  @media only screen and (min-width: 1201px) {
+    .grid-container {
+        margin: 1rem 1.5rem;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+    .auto-layout-grid {
+        margin: 1rem 15rem;
+    }
+    .auto-layout-half ::slotted(*) {
+        grid-column: auto / span 6;
+    }
+    .auto-layout-thirds-left {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 8;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 4;
+        }
+    }
+    .auto-layout-thirds-right {
+        ::slotted(*:nth-child(even)) {
+            grid-column: auto / span 4;
+        }
+        ::slotted(*:nth-child(odd)) {
+            grid-column: auto / span 8;
+        }
+    }
+  }
+
+.auto-layout-grid ::slotted(*) {
+    grid-column: auto / span 4;
+    display: block;
+}
+
+.auto-layout-form ::slotted(*) {
+    grid-column: auto / span 12;
+}
+
+.auto-layout-full-width ::slotted(*) {
+    grid-column: auto / span 12;
+}
+

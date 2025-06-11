@@ -966,6 +966,13 @@ export namespace Components {
          */
         "status"?: IcInformationStatusOrEmpty;
     }
+    interface IcLayoutGrid {
+        "autoLayout"?: "grid" | "form" | "full-width" | "half" | "thirds-right" | "thirds-left" | "quarters-right" | "quarters-left";
+    }
+    interface IcLayoutGridItem {
+        "colSpan"?: number;
+        "rowSpan"?: number;
+    }
     interface IcLink {
         /**
           * If `true`, the user can save the linked URL instead of navigating to it. If the value is a string, it will be used as the filename for the download.
@@ -2880,6 +2887,18 @@ declare global {
         prototype: HTMLIcInputValidationElement;
         new (): HTMLIcInputValidationElement;
     };
+    interface HTMLIcLayoutGridElement extends Components.IcLayoutGrid, HTMLStencilElement {
+    }
+    var HTMLIcLayoutGridElement: {
+        prototype: HTMLIcLayoutGridElement;
+        new (): HTMLIcLayoutGridElement;
+    };
+    interface HTMLIcLayoutGridItemElement extends Components.IcLayoutGridItem, HTMLStencilElement {
+    }
+    var HTMLIcLayoutGridItemElement: {
+        prototype: HTMLIcLayoutGridItemElement;
+        new (): HTMLIcLayoutGridItemElement;
+    };
     interface HTMLIcLinkElement extends Components.IcLink, HTMLStencilElement {
     }
     var HTMLIcLinkElement: {
@@ -3457,6 +3476,8 @@ declare global {
         "ic-input-container": HTMLIcInputContainerElement;
         "ic-input-label": HTMLIcInputLabelElement;
         "ic-input-validation": HTMLIcInputValidationElement;
+        "ic-layout-grid": HTMLIcLayoutGridElement;
+        "ic-layout-grid-item": HTMLIcLayoutGridItemElement;
         "ic-link": HTMLIcLinkElement;
         "ic-loading-indicator": HTMLIcLoadingIndicatorElement;
         "ic-menu": HTMLIcMenuElement;
@@ -4406,6 +4427,13 @@ declare namespace LocalJSX {
           * The status of the validation - e.g. 'error' | 'warning' | 'success'.
          */
         "status"?: IcInformationStatusOrEmpty;
+    }
+    interface IcLayoutGrid {
+        "autoLayout"?: "grid" | "form" | "full-width" | "half" | "thirds-right" | "thirds-left" | "quarters-right" | "quarters-left";
+    }
+    interface IcLayoutGridItem {
+        "colSpan"?: number;
+        "rowSpan"?: number;
     }
     interface IcLink {
         /**
@@ -6088,6 +6116,8 @@ declare namespace LocalJSX {
         "ic-input-container": IcInputContainer;
         "ic-input-label": IcInputLabel;
         "ic-input-validation": IcInputValidation;
+        "ic-layout-grid": IcLayoutGrid;
+        "ic-layout-grid-item": IcLayoutGridItem;
         "ic-link": IcLink;
         "ic-loading-indicator": IcLoadingIndicator;
         "ic-menu": IcMenu;
@@ -6159,6 +6189,8 @@ declare module "@stencil/core" {
             "ic-input-container": LocalJSX.IcInputContainer & JSXBase.HTMLAttributes<HTMLIcInputContainerElement>;
             "ic-input-label": LocalJSX.IcInputLabel & JSXBase.HTMLAttributes<HTMLIcInputLabelElement>;
             "ic-input-validation": LocalJSX.IcInputValidation & JSXBase.HTMLAttributes<HTMLIcInputValidationElement>;
+            "ic-layout-grid": LocalJSX.IcLayoutGrid & JSXBase.HTMLAttributes<HTMLIcLayoutGridElement>;
+            "ic-layout-grid-item": LocalJSX.IcLayoutGridItem & JSXBase.HTMLAttributes<HTMLIcLayoutGridItemElement>;
             "ic-link": LocalJSX.IcLink & JSXBase.HTMLAttributes<HTMLIcLinkElement>;
             "ic-loading-indicator": LocalJSX.IcLoadingIndicator & JSXBase.HTMLAttributes<HTMLIcLoadingIndicatorElement>;
             "ic-menu": LocalJSX.IcMenu & JSXBase.HTMLAttributes<HTMLIcMenuElement>;
