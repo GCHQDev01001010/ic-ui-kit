@@ -726,3 +726,199 @@ describe("Stepper performance testing", () => {
     });
   });
 });
+
+describe("Pagination performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render pagination within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/pagination?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-pagination-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Tab performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render tabs within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/tabs?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-tabs-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Vertical Card performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single vertical card within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/card-vertical?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-card-vertical-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple vertical cards within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/card-vertical-multiple?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-card-vertical-multiple-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Alert performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single alert within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/alert?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-alert-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple alerts within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/alert-multiple?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-alert-multiple-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Toggle Button performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single toggle button within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/toggle-button?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-toggle-button-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple toggle buttons within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/toggle-button-multiple?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-toggle-button-multiple-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render toggle button variants within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/toggle-button-variants?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-toggle-button-variants-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render toggle button group variants within performance thresholds [${theme}]`, () => {
+      cy.visit(
+        `http://localhost:3001/#/toggle-button-group-variants?theme=${theme}`
+      );
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-toggle-button-group-variants-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Text Field performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single text field within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/text-field?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-text-field-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple text fields within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/text-field-multiple?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-text-field-multiple-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render text field variants within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/text-field-variants?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-text-field-variants-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Switch performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single switch within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/switch?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-switch-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple switches within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/switch-multiple?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-switch-multiple-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Chip performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single chip within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/chip?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-chip-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple chips within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/chip-multiple?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-chip-multiple-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Data List performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render single data list within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/data-list?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-data-list-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+
+    it(`should render multiple data lists within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/data-list-multiple?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-data-list-multiple-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Classification banner performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render classification banner within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/classification-banner?theme=${theme}`);
+      cy.task(
+        "setLighthouseReportName",
+        `lighthouse-classification-banner-${theme}`
+      );
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
+
+describe("Empty state performance testing", () => {
+  ["light", "dark"].forEach((theme) => {
+    it(`should render empty state within performance thresholds [${theme}]`, () => {
+      cy.visit(`http://localhost:3001/#/empty-state?theme=${theme}`);
+      cy.task("setLighthouseReportName", `lighthouse-empty-state-${theme}`);
+      cy.lighthouse(defaultThresholds, desktopConfig, lighthouseConfig);
+    });
+  });
+});
