@@ -630,6 +630,21 @@ export namespace Components {
          */
         "value"?: string | Date | null | undefined;
     }
+    interface IcTimeSelector {
+        /**
+          * Sets the theme color to the dark or light theme color. "inherit" will set the color based on the system settings or ic-theme component.
+         */
+        "theme"?: IcThemeMode1;
+        /**
+          * The format in which the time will be displayed.
+         */
+        "timeFormat": IcTimeFormat;
+        "triggerIcChange": (t: Date | null) => Promise<void>;
+        /**
+          * The value of the time selector. The value can be in any format supported as `timeFormat`, in ISO 8601 time string format (`HH:MM:SS`) or as a JavaScript `Date` object.
+         */
+        "value"?: string | Date | null | undefined;
+    }
     interface IcTreeItem {
         /**
           * If `true`, the tree item appears in the disabled state.
@@ -739,6 +754,10 @@ export interface IcPaginationBarCustomEvent<T> extends CustomEvent<T> {
 export interface IcTimeInputCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLIcTimeInputElement;
+}
+export interface IcTimeSelectorCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLIcTimeSelectorElement;
 }
 export interface IcTreeItemCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -883,6 +902,30 @@ declare global {
         prototype: HTMLIcTimeInputElement;
         new (): HTMLIcTimeInputElement;
     };
+    interface HTMLIcTimeSelectorElementEventMap {
+        "icChange": {
+    value: Date | null;
+    timeObject: {
+      hour: string | null;
+      minute: string | null;
+      second: string | null;
+    };
+  };
+    }
+    interface HTMLIcTimeSelectorElement extends Components.IcTimeSelector, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLIcTimeSelectorElementEventMap>(type: K, listener: (this: HTMLIcTimeSelectorElement, ev: IcTimeSelectorCustomEvent<HTMLIcTimeSelectorElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLIcTimeSelectorElementEventMap>(type: K, listener: (this: HTMLIcTimeSelectorElement, ev: IcTimeSelectorCustomEvent<HTMLIcTimeSelectorElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLIcTimeSelectorElement: {
+        prototype: HTMLIcTimeSelectorElement;
+        new (): HTMLIcTimeSelectorElement;
+    };
     interface HTMLIcTreeItemElementEventMap {
         "icTreeItemSelected": { id: string };
         "icTreeItemExpanded": {
@@ -918,6 +961,7 @@ declare global {
         "ic-date-picker": HTMLIcDatePickerElement;
         "ic-pagination-bar": HTMLIcPaginationBarElement;
         "ic-time-input": HTMLIcTimeInputElement;
+        "ic-time-selector": HTMLIcTimeSelectorElement;
         "ic-tree-item": HTMLIcTreeItemElement;
         "ic-tree-view": HTMLIcTreeViewElement;
     }
@@ -1595,6 +1639,31 @@ declare namespace LocalJSX {
          */
         "value"?: string | Date | null | undefined;
     }
+    interface IcTimeSelector {
+        /**
+          * Emitted when the value has changed.
+         */
+        "onIcChange"?: (event: IcTimeSelectorCustomEvent<{
+    value: Date | null;
+    timeObject: {
+      hour: string | null;
+      minute: string | null;
+      second: string | null;
+    };
+  }>) => void;
+        /**
+          * Sets the theme color to the dark or light theme color. "inherit" will set the color based on the system settings or ic-theme component.
+         */
+        "theme"?: IcThemeMode1;
+        /**
+          * The format in which the time will be displayed.
+         */
+        "timeFormat"?: IcTimeFormat;
+        /**
+          * The value of the time selector. The value can be in any format supported as `timeFormat`, in ISO 8601 time string format (`HH:MM:SS`) or as a JavaScript `Date` object.
+         */
+        "value"?: string | Date | null | undefined;
+    }
     interface IcTreeItem {
         /**
           * If `true`, the tree item appears in the disabled state.
@@ -1694,6 +1763,7 @@ declare namespace LocalJSX {
         "ic-date-picker": IcDatePicker;
         "ic-pagination-bar": IcPaginationBar;
         "ic-time-input": IcTimeInput;
+        "ic-time-selector": IcTimeSelector;
         "ic-tree-item": IcTreeItem;
         "ic-tree-view": IcTreeView;
     }
@@ -1709,6 +1779,7 @@ declare module "@stencil/core" {
             "ic-date-picker": LocalJSX.IcDatePicker & JSXBase.HTMLAttributes<HTMLIcDatePickerElement>;
             "ic-pagination-bar": LocalJSX.IcPaginationBar & JSXBase.HTMLAttributes<HTMLIcPaginationBarElement>;
             "ic-time-input": LocalJSX.IcTimeInput & JSXBase.HTMLAttributes<HTMLIcTimeInputElement>;
+            "ic-time-selector": LocalJSX.IcTimeSelector & JSXBase.HTMLAttributes<HTMLIcTimeSelectorElement>;
             "ic-tree-item": LocalJSX.IcTreeItem & JSXBase.HTMLAttributes<HTMLIcTreeItemElement>;
             "ic-tree-view": LocalJSX.IcTreeView & JSXBase.HTMLAttributes<HTMLIcTreeViewElement>;
         }

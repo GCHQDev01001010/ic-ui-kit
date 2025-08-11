@@ -1,0 +1,8 @@
+:host .time-selector-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.time-reel-container ul {
+  list-style: none;
+}
